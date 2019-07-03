@@ -1,0 +1,17 @@
+set_a = {1,3,5,7,3,2,'a','b','aa','str'}
+print(1,hash(1))
+print(3,hash(3))
+print(5,hash(5))
+print(7,hash(7))
+print(2,hash(2))
+print('a',hash('a'))
+print('b', hash('b'))
+print('aa',hash('aa'))
+print('str', hash('str'))
+set_a.add('add')
+print(set_a)
+
+set_a.discard(1)
+print(set_a)
+set_a.add(1)
+print(set_a)
