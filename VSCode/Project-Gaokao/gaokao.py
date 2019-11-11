@@ -2,7 +2,7 @@ from multiprocessing.pool import Pool
 import csv
 import requests
 from bs4 import BeautifulSoup
-import pymongo
+# import pymongo
 import re
 
 # client = pymongo.MongoClient('localhost', 27017)
