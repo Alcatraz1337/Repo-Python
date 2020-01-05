@@ -1,11 +1,12 @@
 def doRectsOverlap(rect1, rect2):
     for a, b in [(rect1, rect2), (rect2, rect1)]:
-    # Check if a's corners are inside b
-    if ((isPointInsideRect(a.left, a.top, b)) or
-        (isPointInsideRect(a.left, a.bottom, b)) or
-        (isPointInsideRect(a.right, a.top, b)) or
-        (isPointInsideRect(a.right, a.bottom, b))):
-        return True
+        # Check if a's corners are inside b
+        if((isPointInsideRect(a.left, a.top, b)) or
+            (isPointInsideRect(a.left, a.bottom, b)) or
+            (isPointInsideRect(a.right, a.top, b)) or
+            (isPointInsideRect(a.right, a.bottom, b))):
+            return True
+    
     return False
 
 # used the by the doRectsOverlap function (won't be called directly from game code)
@@ -14,9 +15,11 @@ def isPointInsideRect(x, y, rect):
         return True
     else:
         return False
+
 ########################################
 from pg_init import *
 from random import randint
+
 class MovingRectangle:
     def __init__(self, x, y, width, height, speed_x, speed_y, color):
         self.x = x
@@ -67,8 +70,7 @@ class MovingSphere():
 def compute_ball_velocity(ball, target_rect):
     if doRectsOverlap(ball.rect, target_rect):
         speed_boost = 1
-        temp_ball = MovingSphere(
-            ball.x, ball.y, ball.radius, ball.speed_x, ball.speed_y, [0, 0, 0])
+        temp_ball = MovingSphere(ball.x, ball.y, ball.radius, ball.speed_x, ball.speed_y, [0, 0, 0])
         while doRectsOverlap(temp_ball.rect, target_rect):
             if temp_ball.speed_y*ball.speed_y > 0:
                 temp_ball.speed_x = ball.speed_x*speed_boost
@@ -76,8 +78,8 @@ def compute_ball_velocity(ball, target_rect):
             else:
                 temp_ball.speed_x = -ball.speed_x*speed_boost
                 temp_ball.speed_y = ball.speed_y*speed_boost
-                temp_ball.update()
-                speed_boost = speed_boost*1.1
+            temp_ball.update()
+            speed_boost = speed_boost*1.1
         if temp_ball.speed_x*ball.speed_x > 0:
             return ball.speed_x, -ball.speed_y
         else:
