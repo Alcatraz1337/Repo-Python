@@ -1,0 +1,1 @@
+key_pressed[K_a] or key_pressed[K_LEFT]
